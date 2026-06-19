@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - Катя Усманова</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff5b84;
+            --dark-pink: #e9456e;
+            --bg-gray: #f4f4f4;
+            --bg-pink: #fff0f5;
+            --text-dark: #1a1a1a;
+            --text-grey: #666;
+            --font-family: 'Montserrat', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-family); color: var(--text-dark); background-color: var(--bg-gray); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        .content-narrow {
+            max-width: 620px;
+            margin: 0 auto;
+        }
+        
+        .text-center { text-align: center; }
+        .text-pink { color: var(--primary-pink); }
+        .bg-pink { background-color: var(--bg-pink); }
+        .bg-white { background-color: #fff; }
+
+        /* Buttons & Links */
+        .btn-pink { 
+            background-color: var(--primary-pink); 
+            color: #fff; 
+            font-weight: 700; 
+            font-size: 16px; 
+            padding: 18px 40px; 
+            border: none; 
+            border-radius: 50px; 
+            cursor: pointer; 
+            text-transform: uppercase; 
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 91, 132, 0.4);
+            text-align: center;
+        }
+        .btn-pink:hover { background-color: var(--dark-pink); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 91, 132, 0.5); }
+        .btn-small { padding: 12px 30px; font-size: 14px; }
+
+        /* HERO */
+        .hero { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px; background-color: #ffffff; padding: 60px 0 40px;}
+        .hero-content { flex: 1; min-width: 350px; }
+        .hero-image { flex: 1; min-width: 350px; text-align: center; display: flex; justify-content: flex-end; }
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding: 30px 0; }
+            .hero-content { width: 100%; }
+            .hero-image { width: 100%; justify-content: center; }
+        }
+        
+        .hero-title { font-size: 48px; line-height: 1.2; font-weight: 900; margin-bottom: 25px; color: var(--primary-pink); }
+        .hero-title span { color: var(--text-dark); }
+        .hero-title .pink { color: var(--primary-pink); }
+        .hero-desc { font-size: 18px; color: var(--primary-pink); margin-bottom: 20px; }
+        .hero-sub { font-size: 18px; margin-top: 20px; margin-bottom: 30px; color: var(--text-dark); }
+
+        /* Blocks */
+        .section-padding { padding: 60px 0; }
+        .section-title { font-size: 34px; font-weight: 600; text-align: center; margin-bottom: 40px; }
+        
+        .card-info { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 20px; }
+        .card-info-item { display: flex; gap: 15px; align-items: flex-start; margin-bottom: 15px; }
+        .icon-arrow { background: #ffc4d0; color: #fff; border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; font-size: 14px; flex-shrink: 0; }
+        .info-text p { margin-bottom: 5px; color: var(--text-dark); }
+
+        /* Карточки товаров */
+        .section-grid { display: flex; flex-direction: column; gap: 30px; }
+        .main-card { 
+            background: #fff; 
+            border-radius: 20px; 
+            padding: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            display: flex; 
+            align-items: stretch; 
+            gap: 20px; 
+        }
+        /* Картинка занимает 40% блока, запрещено сжиматься */
+        .main-card-img { 
+            width: 200px; 
+            flex: 0 0 200px; 
+            border-radius: 15px; overflow: hidden; background: #fff; 
+            display: flex; align-items: center; justify-content: center;
+        }
+        .main-card-img img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        
+        .main-card-content { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+        .main-card-tag { color: var(--primary-pink); font-size: 14px; font-weight: 500; margin-bottom: 5px; display: block; }
+        .main-card-tag.highlight { background: #ffe4ec; color: var(--primary-pink); padding: 5px 15px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+        
+        .main-card-title { font-size: 20px; font-weight: 700; margin-bottom: 15px; }
+        .main-card-desc { color: var(--text-dark); margin-bottom: 20px; font-size: 14px; line-height: 1.5; }
+        .main-card-desc b { font-weight: 700; }
+
+        @media (max-width: 768px) {
+            .main-card { flex-direction: column; text-align: center; padding: 20px; align-items: center; }
+            .main-card-img { width: 140px; flex: 0 0 140px; }
+            .main-card-desc { text-align: left; text-align-last: center; }
+        }
+
+        /* Социальное доказательство (Стопка) */
+        .media-stack-container { background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; }
+        .media-stack-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0; }
+        .media-stack-grid img { width: 100%; max-width: 400px; border-radius: 15px; margin: 0 auto; object-fit: cover; }
+
+        /* Карусели */
+        .carousel-wrapper-container {
+            background: #fff;
+            border-radius: 20px;
+            padding: 30px 20px 20px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 0 auto 40px auto;
+        }
+        .carousel-container { width: 100%; position: relative; }
+        .carousel-wrapper { display: flex; overflow-x: auto; gap: 15px; padding-bottom: 15px; scroll-behavior: smooth; cursor: grab; scrollbar-width: thin; scrollbar-color: var(--primary-pink) #f1f1f1; }
+        .carousel-wrapper:active { cursor: grabbing; }
+        .carousel-wrapper::-webkit-scrollbar { height: 8px; }
+        .carousel-wrapper::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
+        .carousel-wrapper::-webkit-scrollbar-thumb { background: var(--primary-pink); border-radius: 10px; }
+        .carousel-wrapper::-webkit-scrollbar-thumb:hover { background: var(--dark-pink); }
+        
+        .carousel-item { flex: 0 0 auto; width: 180px; height: 260px; border-radius: 15px; position: relative; overflow: hidden; }
+        .carousel-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .carousel-square .carousel-item { width: 200px; height: 200px; }
+        .carousel-stories .carousel-item { width: 150px; height: 330px; border-radius: 20px; }
+
+        .carousel-btn-area { text-align: right; padding: 5px 0 0 0; }
+        .carousel-btn { display: inline-flex; align-items: center; gap: 8px; color: var(--primary-pink); font-size: 16px; font-weight: 500; cursor: pointer; transition: 0.2s; background: transparent; border: none; }
+        .carousel-btn:hover { opacity: 0.7; }
+        .carousel-btn .c-icon { background: #ffc4d0; color: #fff; border-radius: 5px; width: 24px; height: 24px; display: flex; justify-content: center; align-items: center; font-size: 14px; }
+
+        /* Статистика (онлайн) */
+        .stats-box { background: #f4f4f4; border-radius: 20px; padding: 20px; margin: 20px 0; display: flex; flex-direction: column; gap: 5px; }
+        .stats-dot { width: 12px; height: 12px; background: #78dc78; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        .stats-title { font-size: 14px; color: var(--text-dark); }
+        .stats-num { font-size: 32px; font-weight: 600; color: var(--text-dark); margin-top: 5px; }
+
+        /* Гарантии */
+        .guarantee-item { display: flex; gap: 20px; margin-bottom: 20px; align-items: flex-start; padding: 0 10px; }
+        .guarantee-icon { width: 40px; height: 40px; background: #ffc4d0; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-size: 18px; flex-shrink: 0; }
+        .guarantee-text strong { display: block; margin-bottom: 5px; }
+        .guarantee-text p { color: var(--text-grey); font-size: 14px; }
+
+        /* Социальные иконки */
+        .social-icons { display: flex; justify-content: center; gap: 20px; margin: 20px 0; }
+        .social-icon { width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 20px; color: #fff; font-weight: bold; cursor: pointer; transition: 0.2s; text-decoration: none; }
+        .social-icon:hover { transform: scale(1.05); }
+        .soc-telegram { background: #0088cc; }
+        .soc-vk { background: #4a76a8; }
+        .soc-mail { background: #eab332; }
+        .soc-bot { background: #665cac; }
+
+        /* FAQ (Аккордеон) */
+        .faq-section-title { font-size: 24px; font-weight: 400; text-align: center; margin-bottom: 20px; }
+        .faq-item { border-bottom: 1px solid #ddd; padding: 20px 0; cursor: pointer; }
+        .faq-question { font-weight: 600; font-size: 18px; display: flex; justify-content: space-between; align-items: center; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-grey); }
+        .faq-item.active .faq-answer { max-height: 300px; padding-top: 15px; }
+        .faq-icon { font-size: 24px; transition: 0.3s; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+
+        /* Footer */
+        footer .flex-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+        footer ul { display: flex; gap: 20px; flex-wrap: wrap; }
+        .footer-inner { padding: 40px 0; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; padding: 30px 0; }
+            .hero-title { font-size: 32px; }
+            .section-title { font-size: 28px; }
+            .btn-pink { width: 100%; text-align: center; }
+            .carousel-wrapper-container { padding: 15px; }
+            .carousel-item { width: 150px; height: 220px; }
+            .carousel-square .carousel-item { width: 150px; height: 150px; }
+            .carousel-stories .carousel-item { width: 120px; height: 260px; }
+        }
+        @media (max-width: 480px) {
+            .hero-title { font-size: 26px; }
+            .carousel-item { width: 130px; height: 200px; }
+            .carousel-square .carousel-item { width: 130px; height: 130px; }
+            .carousel-stories .carousel-item { width: 100px; height: 220px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HERO -->
+    <section class="hero bg-white">
+        <div class="container" style="display: flex; flex-wrap: wrap; align-items: center;">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    ПРИВЕДИТЕ ТЕЛО В<br>
+                    ФОРМУ С ЧЕМПИОНКОЙ<br>
+                    <span class="pink">КАТЕЙ УСМАНОВОЙ</span>
+                </h1>
+                <p class="hero-desc">без диет, голода и запретов<br>с пользой для здоровья</p>
+                <p class="hero-sub">Похудеть, подтянуть попу и живот, набрать форму<br>в зале, восстановиться после родов — тренировки<br>и питание под вашу цель</p>
+                
+                <a href="#training-at-home" class="btn-pink">ВЫБРАТЬ ПРОГРАММУ</a>
+                <div class="timer-wrap" style="margin-top: 15px;">
+                    <div class="timer-label" style="color: #999; font-size: 14px;">Для корректной работы сайта отключите VPN</div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="main_img/40.jpg" alt="Катя Усманова с гантелями" style="width:100%; max-width:500px; border-radius:20px; object-fit:cover;">
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTHOR TRUST -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Доверьте свое тело чемпионке<br>фитнес-бикини и тренеру <span class="text-pink">Кате Усмановой</span></h2>
+            <p class="text-center" style="color:var(--text-grey); margin-bottom: 30px;">С 2015 года создаёт топовые тренировки для идеальных ягодиц,<br>плоского живота и стройности без жёстких диет.<br>Уже более 580 000+ участниц тренируются с Катей, ведь она:</p>
+            
+            <div style="background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 40px;">
+                <div class="card-info-item"><div class="icon-arrow" style="background: #ffb3c6;">🏋️</div><div class="info-text"><p>Вице-чемпионка мира и чемпионка России по фитнес-бикини</p></div></div>
+                <div class="card-info-item"><div class="icon-arrow" style="background: #ffb3c6;">🏋️</div><div class="info-text"><p>Профессиональный фитнес-тренер с опытом более 15 лет</p></div></div>
+                <div class="card-info-item"><div class="icon-arrow" style="background: #ffb3c6;">🏋️</div><div class="info-text"><p>Мама 2-х детей. Всего за 100 дней после первых родов похудела на 20 кг и вернулась в прежнюю форму</p></div></div>
+                <div class="card-info-item"><div class="icon-arrow" style="background: #ffb3c6;">🏋️</div><div class="info-text"><p>Автор первых в России масштабных марафонов стройности</p></div></div>
+                <div class="card-info-item"><div class="icon-arrow" style="background: #ffb3c6;">🏋️</div><div class="info-text"><p>Чемпионка России и мира по жиму лёжа</p></div></div>
+            </div>
+
+            <div class="carousel-wrapper-container carousel-square">
+                <div class="carousel-container">
+                    <div class="carousel-wrapper" id="carousel-1">
+                        <div class="carousel-item"><img src="main_img/41.jpg" alt="Фото 1"></div>
+                        <div class="carousel-item"><img src="main_img/42.jpg" alt="Фото 2"></div>
+                        <div class="carousel-item"><img src="main_img/43.jpg" alt="Фото 3"></div>
+                        <div class="carousel-item"><img src="main_img/44.jpg" alt="Фото 4"></div>
+                        <div class="carousel-item"><img src="main_img/45.jpg" alt="Фото 5"></div>
+                        <div class="carousel-item"><img src="main_img/46.jpg" alt="Фото 6"></div>
+                        <div class="carousel-item"><img src="main_img/47.jpg" alt="Фото 7"></div>
+                        <div class="carousel-item"><img src="main_img/48.jpg" alt="Фото 8"></div>
+                        <div class="carousel-item"><img src="main_img/49.jpg" alt="Фото 9"></div>
+                    </div>
+                    <div class="carousel-btn-area"><button class="carousel-btn" onclick="scrollCarousel('carousel-1', 215)">Листайте вправо <span class="c-icon">➜</span></button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF MEDIA -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Кате доверяют миллионы. <span class="text-pink">Её методы<br>работают</span> — и об этом говорят все</h2>
+            <p class="text-center" style="color:var(--text-grey); margin-bottom: 30px;">580 000+ учениц. Подкасты. Статьи<br>в СМИ. Коллаборации с звёздами.</p>
+            
+            <div class="media-stack-container">
+                <div class="media-stack-grid">
+                    <img src="main_img/50.jpg" alt="ТВ эфир">
+                    <img src="main_img/51.jpg" alt="Подкаст с фитнесом">
+                    <img src="main_img/52.jpg" alt="Подкаст">
+                    <img src="main_img/53.jpg" alt="Статья в СМИ">
+                </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 30px;">
+                <a href="promo.html" class="btn-pink">ВЕРНУТЬ ФОРМУ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRAINING AT HOME -->
+    <section class="container section-padding" id="training-at-home">
+        <div class="content-narrow">
+            <h2 class="section-title">Тренировки дома</h2>
+            <div class="section-grid">
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/106.jpg" alt="Метод Усмановой"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag highlight">ФЛАГМАН</span>
+                        <div class="main-card-title">Метод Усмановой</div>
+                        <p class="main-card-desc"><b>Освойте технику и втянетесь в регулярные тренировки —</b> без травм и через силу. Первая программа, с которой начинают все ученицы Кати.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/107.jpg" alt="Стройности"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Марафон</span>
+                        <div class="main-card-title">Стройности</div>
+                        <p class="main-card-desc"><b>Первый видимый результат за 21 день —</b> уходит первый жир, появляется тонус и лёгкость. Для тех, кто стартует с нуля.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/108.jpg" alt="Упругая попа 1.0"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Марафон</span>
+                        <div class="main-card-title">Упругая попа 1.0</div>
+                        <p class="main-card-desc"><b>Первый объём и подтянутость ягодиц —</b> с собственным весом. Для тех, кто впервые целенаправленно работает над попой.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/109.jpg" alt="Упругая попа 2.0"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Марафон</span>
+                        <div class="main-card-title">Упругая попа 2.0</div>
+                        <p class="main-card-desc"><b>Плотные, упругие ягодицы —</b> следующий уровень после 1.0. С резинкой и утяжелителями, для подготовленных.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/110.jpg" alt="Плоский живот"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Марафон</span>
+                        <div class="main-card-title">Плоский живот</div>
+                        <p class="main-card-desc"><b>Убрать вываливающийся живот, который не уходит даже после похудения.</b> Тренировки на глубокие мышцы пресса, которые отвечают за плоский живот — а не за «кубики».</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/111.jpg" alt="Жиросжигающий"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Курс</span>
+                        <div class="main-card-title">Жиросжигающий</div>
+                        <p class="main-card-desc"><b>Сжечь жир и проявить рельеф —</b> за 6 недель. Для тех, кто уже тренировался: с гантелями, по схеме интервальных нагрузок.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GYM TRAINING -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Тренировки в зале</h2>
+            <div class="section-grid">
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/112.jpg" alt="Для зала"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Курс</span>
+                        <div class="main-card-title">Для зала</div>
+                        <p class="main-card-desc"><b>Мышцы снова растут —</b> когда дома прогресс уже встал. Готовая программа для зала на мышечный объём.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PREGNANCY & POSTPARTUM -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Беременность и после родов</h2>
+            <div class="section-grid">
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/113.jpg" alt="Для беременных"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Курс</span>
+                        <div class="main-card-title">Для беременных</div>
+                        <p class="main-card-desc"><b>Лёгкие роды и тело без перегрузки —</b> безопасные тренировки на всех триместрах. Те самые, по которым Катя тренировалась в свои беременности: спина, тазовое дно, подготовка к родам.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/114.jpg" alt="Восстановление после родов"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Курс</span>
+                        <div class="main-card-title">Восстановление<br>после родов</div>
+                        <p class="main-card-desc"><b>Вернётесь в форму после родов и кесарева —</b> сначала диастаз, тазовое дно и осанка, потом стройность и тонус. По системе, по которой Катя возвращалась сама.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUTRITION -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Питание</h2>
+            <div class="section-grid">
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/115.jpg" alt="ИИ-нутрициолог"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">БЕСТСЕЛЛЕР</span>
+                        <div class="main-card-title">ИИ-нутрициолог</div>
+                        <p class="main-card-desc"><b>Едите без срывов и понимаете своё тело —</b> питание, тренировки, анализы в кармане. Подскажет, поддержит, не осудит.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/116.jpg" alt="По питанию"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag">Курс</span>
+                        <div class="main-card-title">По питанию</div>
+                        <p class="main-card-desc"><b>Сбросить вес без диет и жёстких ограничений.</b> Избавиться от срывов, заедания и качелей веса.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SELF-LOVE -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Любовь к себе</h2>
+            <div class="section-grid">
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/117.jpg" alt="Любовь к себе 1.0"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag" style="opacity:0;">ПРОГРАММА</span>
+                        <div class="main-card-title">Любовь к себе 1.0</div>
+                        <p class="main-card-desc"><b>Перестать ненавидеть своё отражение</b> и начать тренироваться из любви, а не из злости. Программа для тех, кто худеет годами и всё равно недоволен собой.</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="main-card">
+                    <div class="main-card-img"><img src="main_img/118.jpg" alt="Любовь к себе 2.0"></div>
+                    <div class="main-card-content">
+                        <span class="main-card-tag" style="opacity:0;">КУРС</span>
+                        <div class="main-card-title">Любовь к себе 2.0</div>
+                        <p class="main-card-desc"><b>Не приносить себя в жертву —</b> ни делам, ни близким, ни еде. Вторая ступень после 1.0, для тех, кто живёт «потом».</p>
+                        <a href="promo.html" class="btn-pink btn-small">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title"><span class="text-pink">580 000</span> девушек<br>уже тренируются с Катей</h2>
+            
+            <div class="carousel-wrapper-container">
+                <div style="background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                    <div class="card-info-item"><div class="icon-arrow">→</div><div class="info-text"><p>Первые видимые результаты уже на 6-й день тренировок</p></div></div>
+                    <div class="card-info-item"><div class="icon-arrow">→</div><div class="info-text"><p>В среднем ученицы теряют 4–6 кг за первый месяц</p></div></div>
+                    <div class="stats-box">
+                        <div class="stats-title"><span class="stats-dot"></span>Тренируются прямо сейчас</div>
+                        <div class="stats-num">3 693</div>
+                    </div>
+                </div>
+
+                <div class="carousel-container" style="margin-top: 20px;">
+                    <div class="carousel-wrapper" id="carousel-2">
+                        <div class="carousel-item"><img src="main_img/54.jpg" alt="Отзыв 1"></div>
+                        <div class="carousel-item"><img src="main_img/55.jpg" alt="Отзыв 2"></div>
+                        <div class="carousel-item"><img src="main_img/56.jpg" alt="Отзыв 3"></div>
+                        <div class="carousel-item"><img src="main_img/57.jpg" alt="Отзыв 4"></div>
+                        <div class="carousel-item"><img src="main_img/58.jpg" alt="Отзыв 5"></div>
+                        <div class="carousel-item"><img src="main_img/59.jpg" alt="Отзыв 6"></div>
+                        <div class="carousel-item"><img src="main_img/60.jpg" alt="Отзыв 7"></div>
+                        <div class="carousel-item"><img src="main_img/61.jpg" alt="Отзыв 8"></div>
+                        <div class="carousel-item"><img src="main_img/62.jpg" alt="Отзыв 9"></div>
+                        <div class="carousel-item"><img src="main_img/63.jpg" alt="Отзыв 10"></div>
+                        <div class="carousel-item"><img src="main_img/64.jpg" alt="Отзыв 11"></div>
+                        <div class="carousel-item"><img src="main_img/65.jpg" alt="Отзыв 12"></div>
+                        <div class="carousel-item"><img src="main_img/66.jpg" alt="Отзыв 13"></div>
+                        <div class="carousel-item"><img src="main_img/67.jpg" alt="Отзыв 14"></div>
+                        <div class="carousel-item"><img src="main_img/68.jpg" alt="Отзыв 15"></div>
+                        <div class="carousel-item"><img src="main_img/69.jpg" alt="Отзыв 16"></div>
+                        <div class="carousel-item"><img src="main_img/70.jpg" alt="Отзыв 17"></div>
+                        <div class="carousel-item"><img src="main_img/71.jpg" alt="Отзыв 18"></div>
+                        <div class="carousel-item"><img src="main_img/72.jpg" alt="Отзыв 19"></div>
+                        <div class="carousel-item"><img src="main_img/73.jpg" alt="Отзыв 20"></div>
+                        <div class="carousel-item"><img src="main_img/74.jpg" alt="Отзыв 21"></div>
+                        <div class="carousel-item"><img src="main_img/75.jpg" alt="Отзыв 22"></div>
+                        <div class="carousel-item"><img src="main_img/76.jpg" alt="Отзыв 23"></div>
+                        <div class="carousel-item"><img src="main_img/77.jpg" alt="Отзыв 24"></div>
+                        <div class="carousel-item"><img src="main_img/78.jpg" alt="Отзыв 25"></div>
+                        <div class="carousel-item"><img src="main_img/79.jpg" alt="Отзыв 26"></div>
+                        <div class="carousel-item"><img src="main_img/80.jpg" alt="Отзыв 27"></div>
+                        <div class="carousel-item"><img src="main_img/81.jpg" alt="Отзыв 28"></div>
+                        <div class="carousel-item"><img src="main_img/82.jpg" alt="Отзыв 29"></div>
+                        <div class="carousel-item"><img src="main_img/83.jpg" alt="Отзыв 30"></div>
+                        <div class="carousel-item"><img src="main_img/84.jpg" alt="Отзыв 31"></div>
+                        <div class="carousel-item"><img src="main_img/85.jpg" alt="Отзыв 32"></div>
+                        <div class="carousel-item"><img src="main_img/86.jpg" alt="Отзыв 33"></div>
+                        <div class="carousel-item"><img src="main_img/87.jpg" alt="Отзыв 34"></div>
+                        <div class="carousel-item"><img src="main_img/88.jpg" alt="Отзыв 35"></div>
+                        <div class="carousel-item"><img src="main_img/89.jpg" alt="Отзыв 36"></div>
+                        <div class="carousel-item"><img src="main_img/90.jpg" alt="Отзыв 37"></div>
+                        <div class="carousel-item"><img src="main_img/91.jpg" alt="Отзыв 38"></div>
+                        <div class="carousel-item"><img src="main_img/92.jpg" alt="Отзыв 39"></div>
+                    </div>
+                    <div class="carousel-btn-area"><button class="carousel-btn" onclick="scrollCarousel('carousel-2', 195)">Листай вправо <span class="c-icon">➜</span></button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HELP SECTION -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">НЕ ЗНАЕТЕ, С ЧЕГО НАЧАТЬ?</h2>
+            <div style="background: #fff; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <p style="margin-bottom: 20px;">Напишите нам и подберём программу под вашу цель<br>и уровень. Это бесплатно и быстро.</p>
+                <div class="social-icons">
+                    <a class="social-icon soc-telegram" href="https://t.me/UsmanovaSport_bot" target="_blank">✈</a>
+                    <a class="social-icon soc-vk" href="https://vk.ru/usmanovateam" target="_blank">VK</a>
+                    <a class="social-icon soc-mail" href="mailto:help@usmanovasport.ru" target="_blank">✉</a>
+                    <a class="social-icon soc-bot" href="https://max.ru/id7734434533_1_bot" target="_blank">🤖</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GUARANTEES -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Программы <span class="text-pink">Кати Усмановой</span> —<br>это всегда гарантия</h2>
+            <div style="background: #fff; border-radius: 20px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+                <div class="guarantee-item"><div class="guarantee-icon">🛡️</div><div class="guarantee-text"><strong>Гарантия лучшей цены</strong><p>Самая лояльная цена на рынке фитнеса для комплекта тренировок с таким глубоким содержанием программ, направленных на быстрый результат.</p></div></div>
+                <div class="guarantee-item"><div class="guarantee-icon">🛡️</div><div class="guarantee-text"><strong>Гарантия уникальности программ</strong><p>Все программы тренировок разработаны лично Катей Усмановой и проверены на её опыте.</p></div></div>
+                <div class="guarantee-item"><div class="guarantee-icon">🛡️</div><div class="guarantee-text"><strong>Гарантия результата при соблюдении всех рекомендаций</strong><p>Задания и рекомендации помогают закреплять результат и мотивируют двигаться дальше.</p></div></div>
+                <div class="guarantee-item"><div class="guarantee-icon">🛡️</div><div class="guarantee-text"><strong>Гарантия соблюдения сроков обучения</strong><p>Все программы будут открыты в указанный срок с согласованным доступом.</p></div></div>
+                <div class="guarantee-item"><div class="guarantee-icon">🛡️</div><div class="guarantee-text"><strong>Гарантия юридической чистоты сделки</strong><p>Оплата проходит через кассу, вы получите чек на свой e-mail.</p></div></div>
+                <div class="guarantee-item"><div class="guarantee-icon">🛡️</div><div class="guarantee-text"><strong>Гарантия предоставления необходимой информации</strong><p>Мы предоставим все материалы, необходимые вам для быстрого достижения результата. У вас не останется вопросов по питанию и тренировкам.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL STORIES -->
+    <section class="container section-padding">
+        <div class="content-narrow">
+            <h2 class="section-title">Девушки, которые тренируются<br>с Катей <span class="text-pink">прямо сейчас</span></h2>
+            <p class="text-center" style="color:var(--text-grey); margin-bottom: 30px;">Реальные истории, реальные результаты. Присоединяйся —<br>следующая история будет твоей.</p>
+
+            <div class="carousel-wrapper-container carousel-stories">
+                <div class="carousel-container">
+                    <div class="carousel-wrapper" id="carousel-3">
+                        <div class="carousel-item"><img src="main_img/93.jpg" alt="Сторис 1"></div>
+                        <div class="carousel-item"><img src="main_img/94.jpg" alt="Сторис 2"></div>
+                        <div class="carousel-item"><img src="main_img/95.jpg" alt="Сторис 3"></div>
+                        <div class="carousel-item"><img src="main_img/96.jpg" alt="Сторис 4"></div>
+                        <div class="carousel-item"><img src="main_img/97.jpg" alt="Сторис 5"></div>
+                        <div class="carousel-item"><img src="main_img/98.jpg" alt="Сторис 6"></div>
+                        <div class="carousel-item"><img src="main_img/99.jpg" alt="Сторис 7"></div>
+                        <div class="carousel-item"><img src="main_img/100.jpg" alt="Сторис 8"></div>
+                        <div class="carousel-item"><img src="main_img/101.jpg" alt="Сторис 9"></div>
+                        <div class="carousel-item"><img src="main_img/102.jpg" alt="Сторис 10"></div>
+                        <div class="carousel-item"><img src="main_img/103.jpg" alt="Сторис 11"></div>
+                        <div class="carousel-item"><img src="main_img/104.jpg" alt="Сторис 12"></div>
+                        <div class="carousel-item"><img src="main_img/105.jpg" alt="Сторис 13"></div>
+                    </div>
+                    <div class="carousel-btn-area"><button class="carousel-btn" onclick="scrollCarousel('carousel-3', 165)">Листай вправо <span class="c-icon">➜</span></button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding">
+        <div class="container" style="max-width: 800px;">
+            <h3 class="faq-section-title">Отвечаем на вопросы</h3>
+            <div>
+                <div class="faq-item"><div class="faq-question">Подойдёт ли мне программа, если я никогда не тренировалась? <span class="faq-icon">+</span></div><div class="faq-answer">Да. На витрине есть программы для старта с нуля — например, Метод Усмановой и Марафон стройности. Катя показывает и объясняет каждое движение, вы просто повторяете. Если не знаете, с чего начать, напишите нам — поможем выбрать программу под вашу цель и уровень.</div></div>
+                <div class="faq-item"><div class="faq-question">Сколько времени в день нужно на тренировки? <span class="faq-icon">+</span></div><div class="faq-answer">От 20 до 45 минут. Заниматься можно в любое удобное время — расписания нет, уроки открыты, включаете когда вам удобно днём или вечером.</div></div>
+                <div class="faq-item"><div class="faq-question">Можно ли тренироваться дома? Нужно ли оборудование? <span class="faq-icon">+</span></div><div class="faq-answer">Да, все программы рассчитаны на занятия дома. Для большинства достаточно коврика и собственного веса. Для некоторых программ пригодится минимальный инвентарь — фитнес-резинка, лёгкие гантели или утяжелители. Его можно заменить подручными средствами, например бутылками с водой. Что именно нужно, указано в описании каждой программы.</div></div>
+                <div class="faq-item"><div class="faq-question">На какой срок открывается доступ к программе? <span class="faq-icon">+</span></div><div class="faq-answer">Срок доступа указан в описании каждой программы.</div></div>
+                <div class="faq-item"><div class="faq-question">Можно ли оплатить в рассрочку? <span class="faq-icon">+</span></div><div class="faq-answer">Да, рассрочка доступна. Условия указаны при оформлении заказа.</div></div>
+                <div class="faq-item"><div class="faq-question">Могу ли я оплатить картой иностранного банка? <span class="faq-icon">+</span></div><div class="faq-answer">Да. При оформлении заказа нажмите «Оплатить картой иностранного банка», выберите удобный способ на платёжной странице и подтвердите оплату.</div></div>
+                <div class="faq-item"><div class="faq-question">Я живу не в России. Смогу заниматься? <span class="faq-icon">+</span></div><div class="faq-answer">Да. Тренировки доступны в любой точке мира — нужен только смартфон, планшет или компьютер с интернетом.</div></div>
+                <div class="faq-item"><div class="faq-question">Как я получу доступ после оплаты? <span class="faq-icon">+</span></div><div class="faq-answer">Доступ к программам открывается в личном кабинете сразу после оплаты. Авторизация — по номеру телефона, который вы указали при оформлении заказа.</div></div>
+                <div class="faq-item"><div class="faq-question">Я оплатила, но не вижу доступ. Что делать? <span class="faq-icon">+</span></div><div class="faq-answer">Проверьте, что авторизовались по тому же номеру телефона, который указывали при оплате. Письмо-подтверждение приходит на почту в течение суток — загляните и в папку «Спам». Если доступа всё равно нет, напишите в поддержку, поможем.</div></div>
+                <div class="faq-item"><div class="faq-question">Остались вопросы? <span class="faq-icon">+</span></div><div class="faq-answer">Напишите нам — поможем выбрать программу и ответим на любой вопрос.<br>VK: vk.ru/usmanovateam<br>Почта: help@usmanovasport.ru</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="bg-pink" style="border-radius: 20px; padding: 30px 20px; margin-bottom: 20px;">
+                <div style="background: #fff; border-radius: 20px; padding: 40px 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
+                    <h4 style="font-size: 24px; font-weight: 500; margin-bottom: 10px;">Верните себе тело, в котором вам хорошо</h4>
+                    <p style="font-size: 14px; margin-bottom: 20px;">5 программ + дыхательные тренировки + детские</p>
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+                        <div style="color:#999; text-decoration: line-through; font-size: 24px;">51 230 ₽</div>
+                        <div style="font-size: 32px; font-weight: 700; color: var(--text-dark);">4 800 ₽</div>
+                        <div style="color: var(--primary-pink); font-size: 14px;">(скидка 91%)</div>
+                    </div>
+                    <p style="font-size: 14px; margin-bottom: 20px;">Старт сразу после оплаты. Доступ на 6 месяцев.</p>
+                    <a href="promo.html" class="btn-pink">ЗАБРАТЬ НАБОР СО СКИДКОЙ 91%</a>
+                </div>
+            </div>
+            <div class="flex-grid footer-inner">
+                <div>
+                    <p>© ООО «Онлайн Фитнес», 2020 — 2026.</p>
+                    <p style="margin-top: 10px;">ИНН 7734434533</p>
+                    <p>КПП 773401001</p>
+                    <p>ОГРН 1207700175209</p>
+                    <p>г.Москва, ул.Щукинская, д.2, этаж/офис цокольный/32</p>
+                </div>
+                <div>
+                    <ul style="flex-direction: column; gap: 10px; color:#999;">
+                        <li><a href="#">Служба заботы</a></li>
+                        <li><a href="#">Оферта</a></li>
+                        <li><a href="#">Политика конфиденциальности</a></li>
+                        <li><a href="#">Согласие на обработку персональных данных</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!item.classList.contains('active')) item.classList.add('active');
+            });
+        });
+
+        function scrollCarousel(id, amount) { document.getElementById(id).scrollBy({ left: amount, behavior: 'smooth' }); }
+
+        document.querySelectorAll('.carousel-wrapper').forEach(w => {
+            let isDown = false, startX, scrollLeft;
+            w.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - w.offsetLeft; scrollLeft = w.scrollLeft; });
+            w.addEventListener('mouseleave', () => isDown = false);
+            w.addEventListener('mouseup', () => isDown = false);
+            w.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); w.scrollLeft = scrollLeft - (e.pageX - w.offsetLeft - startX) * 2; });
+        });
+    </script>
+</body>
+</html>
